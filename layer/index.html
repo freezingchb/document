@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <meta content="application/xhtml+xml;charset=UTF-8" http-equiv="Content-Type">
+    <script src="http://libs.baidu.com/jquery/1.8.2/jquery.min.js"></script>
+    <script src="./layer.js"></script>
+    <script src="./layer.custom.js"></script>
+</head>
+<body style="width:320px;">
+    <h2 onclick="click_fun()">点我，点我</h2>
+    <script type="text/javascript">
+        function click_fun(){
+            confirmLayer('确定要删除吗？',function(){
+                loadLayer(1);
+                setTimeout(function(){loadLayer(0)},3000);
+            },function(){
+                alertLayer('您点击了取消');
+            });
+        }
+    </script>
+</body>
+</html>
