@@ -7,7 +7,8 @@
 <script type="text/javascript">
         $(function() {
            $("#checkAll").click(function() {
-                $('input[name="subBox"]').attr("checked",this.checked); 
+                $('input[name="subBox"]').attr("checked",this.checked);
+                alert($('input[name="subBox"]:checked').length);
             });
         });
     </script>
