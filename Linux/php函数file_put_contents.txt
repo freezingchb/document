@@ -1,0 +1,4 @@
+网页访问php脚本执行file_put_contents('a.txt','aa')时
+没有a.txt文件会创建，创建的文件所属者和所属组都是www，权限为644
+执行file_put_contents('./doc/a.txt','aa')时
+如果doc文件夹不存在，该函数将不执行
