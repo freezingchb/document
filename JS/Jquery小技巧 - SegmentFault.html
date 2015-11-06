@@ -1,0 +1,256 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"/>
+    <meta name="renderer" content="webkit"/>
+    <meta property="qc:admins" content="15317273575564615446375"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui, maximum-scale=1, user-scalable=no"/>
+    <meta name="alexaVerifyID" content="LkzCRJ7rPEUwt6fVey2vhxiw1vQ"/>
+    <meta name="apple-itunes-app" content="app-id=958101793, app-argument=">
+    <title>Jquery小技巧 - SegmentFault</title>
+                    <link rel="stylesheet" href="http://static.segmentfault.com/build/global/css/global.be9c48ca.css"/>
+                            <link rel="stylesheet" href="http://static.segmentfault.com/build/blog/css/blog_all.172f5961.css"/>
+                <link rel="stylesheet" href="http://static.segmentfault.com/build/global/css/responsive.85cefb7b.css"/>
+</head>
+
+<body class="blog-post">
+<div class="wrap">
+    <div class="container mt30">
+        <div class="row">
+            <div class="col-xs-12 col-md-9 main">
+                                                <div class="article fmt">
+<p>收集的35个 jQuery 小技巧/代码片段，可以帮你快速开发.</p>
+<p><strong>1. 禁止右键点击</strong></p>
+<pre><code>$(document).ready(function(){
+    $(document).bind("contextmenu",function(e){
+        return false;
+    });
+});
+</code></pre>
+<p><strong>2. 隐藏搜索文本框文字</strong></p>
+<pre><code>Hide when clicked in the search field, the value.(example can be found below in the comment fields)
+
+$(document).ready(function() {
+$("input.text1").val("Enter your search text here");
+   textFill($('input.text1'));
+});
+ 
+    function textFill(input){ //input focus text function
+     var originalvalue = input.val();
+     input.focus( function(){
+          if( $.trim(input.val()) == originalvalue ){ input.val(''); }
+     });
+     input.blur( function(){
+          if( $.trim(input.val()) == '' ){ input.val(originalvalue); }
+     });
+}
+</code></pre>
+<p><strong>3. 在新窗口中打开链接</strong></p>
+<pre><code>XHTML 1.0 Strict doesn’t allow this attribute in the code, so use this to keep the code valid.
+
+$(document).ready(function() {
+   //Example 1: Every link will open in a new window
+   $('a[href^="http://"]').attr("target", "_blank");
+ 
+   //Example 2: Links with the rel="external" attribute will only open in a new window
+   $('a[@rel$='external']').click(function(){
+      this.target = "_blank";
+   });
+});
+// how to use
+&lt;a href="http://www.opensourcehunter.com" rel=external&gt;open link&lt;/a&gt;
+</code></pre>
+<p><strong>4. 检测浏览器</strong></p>
+<p>注: 在版本jQuery 1.4中，$.support 替换掉了$.browser 变量</p>
+<pre><code>$(document).ready(function() {
+// Target Firefox 2 and above
+if ($.browser.mozilla &amp;&amp; $.browser.version &gt;= "1.8" ){
+    // do something
+}
+
+// Target Safari
+if( $.browser.safari ){
+    // do something
+}
+
+// Target Chrome
+if( $.browser.chrome){
+    // do something
+}
+
+// Target Camino
+if( $.browser.camino){
+    // do something
+}
+
+// Target Opera
+if( $.browser.opera){
+    // do something
+}
+
+// Target IE6 and below
+if ($.browser.msie &amp;&amp; $.browser.version &lt;= 6 ){
+    // do something
+}
+
+// Target anything above IE6
+if ($.browser.msie &amp;&amp; $.browser.version &gt; 6){
+    // do something
+}
+});
+</code></pre>
+<p><strong>5. 预加载图片</strong></p>
+<p>This piece of code will prevent the loading of all images, which can be useful if you have a site with lots of images.</p>
+<pre><code>$(document).ready(function() {
+jQuery.preloadImages = function()
+{
+  for(var i = 0; i&lt;ARGUMENTS.LENGTH; jQuery(?&lt;img { i++)&gt;").attr("src", arguments[i]);
+  }
+}
+// how to use
+$.preloadImages("image1.jpg");
+});
+</code></pre>
+<p><strong>6. 页面样式切换</strong></p>
+<pre><code>$(document).ready(function() {
+    $("a.Styleswitcher").click(function() {
+        //swicth the LINK REL attribute with the value in A REL attribute
+        $('link[rel=stylesheet]').attr('href' , $(this).attr('rel'));
+    });
+// how to use
+// place this in your header
+&lt;LINK rel=stylesheet type=text/css href="default.css"&gt;
+// the links
+&lt;A class=Styleswitcher href="#" rel=default.css&gt;Default Theme&lt;/A&gt;
+&lt;A class=Styleswitcher href="#" rel=red.css&gt;Red Theme&lt;/A&gt;
+&lt;A class=Styleswitcher href="#" rel=blue.css&gt;Blue Theme&lt;/A&gt;
+});
+</code></pre>
+<p><strong>10. 获得鼠标指针ＸＹ值</strong></p>
+<p>Want to know where your mouse cursor is?</p>
+<pre><code>$(document).ready(function() {
+   $().mousemove(function(e){
+     //display the x and y axis values inside the div with the id XY
+    $('#XY').html("X Axis : " + e.pageX + " | Y Axis " + e.pageY);
+  });
+// how to use
+&lt;DIV id=XY&gt;&lt;/DIV&gt;
+
+});</code></pre>
+<p><strong>11.返回顶部按钮</strong></p>
+<p>你可以利用 animate 和 scrollTop 来实现返回顶部的动画，而不需要使用其他插件。</p>
+<pre><code>// Back to top
+$('a.top').click(function () {
+  $(document.body).animate({scrollTop: 0}, 800);
+  return false;
+});
+&lt;!-- Create an anchor tag --&gt;
+&lt;a class="top" href="#"&gt;Back to top&lt;/a&gt;
+</code></pre>
+<p>改变 scrollTop 的值可以调整返回距离顶部的距离，而 animate 的第二个参数是执行返回动作需要的时间(单位：毫秒)。</p>
+<p><strong>12.预加载图片</strong></p>
+<p>如果你的页面中使用了很多不可见的图片（如：hover 显示），你可能需要预加载它们：</p>
+<pre><code>$.preloadImages = function () {
+  for (var i = 0; i &lt; arguments.length; i++) {
+    $('&lt;img&gt;').attr('src', arguments[i]);
+  }
+};
+
+$.preloadImages('img/hover1.png', 'img/hover2.png');
+</code></pre>
+<p><strong>29. 使元素居屏幕中间位置</strong></p>
+<p>Center an element in the center of your screen.</p>
+<pre><code>$(document).ready(function() {
+  jQuery.fn.center = function () {
+      this.css("position","absolute");
+      this.css("top", ( $(window).height() - this.height() ) / 2+$(window).scrollTop() + "px");
+      this.css("left", ( $(window).width() - this.width() ) / 2+$(window).scrollLeft() + "px");
+      return this;
+  }
+  $("#id").center();
+});
+</code></pre>
+<p><strong>35. 与其他Javascript类库冲突解决方案</strong></p>
+<p>To avoid conflict other libraries on your website, you can use this jQuery Method, and assign a different variable name instead of the dollar sign.</p>
+<pre><code>$(document).ready(function() {
+   var $jq = jQuery.noConflict();
+   $jq('#id').show();
+});
+</code></pre>
+
+                </div>
+                                
+       
+
+<script>
+    (function (w) {
+        w.SF = {
+            staticUrl: "http://static.segmentfault.com",
+        };
+        w.SF.token = (function () {
+    var _PlWYb = //'RS'
+'2f'+//'O'
+'2b6'+'2f'//'o'
++'4'//'1'
++'1'//'1'
++//'W'
+'cc0'+//'3Z'
+'3Z'+'4'//'uhU'
++//'bf'
+'e70'+/* '6f'//'6f' */''+//'zF'
+'zF'+'7'//'US'
++'ee'//'7aG'
++''///*'P'*/'P'
++//'s'
+'92'+'d'//'b'
++//'Z'
+'0'+//'q'
+'53'+'ff7'//'P'
++//'dK'
+'dd'+//'nbN'
+'c'+'bb'//'lN'
+, _CtYze = [[8,9],[11,13],[15,17]];
+
+    for (var i = 0; i < _CtYze.length; i ++) {
+        _PlWYb = _PlWYb.substring(0, _CtYze[i][0]) + _PlWYb.substring(_CtYze[i][1]);
+    }
+
+    return _PlWYb;
+})();;
+    })(window);
+</script>
+
+    <script src="http://static.segmentfault.com/build/3rd/assets.ce4fe392.js"></script>
+    <script>
+    requirejs.config({
+        baseUrl: "http://static.segmentfault.com/build/global/js"
+    });
+    </script>
+            <script src="http://static.segmentfault.com/build/blog/js/post.2eb273bb.js"></script>
+    
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e23800c454aa573c0ccb16b52665ac26";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<script src="http://cbjs.baidu.com/js/m.js"></script>
+<script>
+if(typeof BAIDU_CLB_fillSlotAsync === 'function') {
+    BAIDU_CLB_fillSlotAsync('981183','adid-981183');
+    BAIDU_CLB_fillSlotAsync('981184','adid-981184');
+    BAIDU_CLB_fillSlotAsync('981694','adid-981694');
+    BAIDU_CLB_fillSlotAsync('981179','adid-981179');
+    BAIDU_CLB_fillSlotAsync('1119908','adid-1119908');
+}
+</script>
+
+
+</body>
+</html>
