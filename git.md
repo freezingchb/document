@@ -10,6 +10,8 @@ cd .ssh
 
 pwd
 
+----------
+
 进入~/.ssh/目录，查看是否有id_rsa.pub文件。若没有：
 
 ssh-keygen
@@ -25,6 +27,8 @@ ssh git@yourserverip
 git clone git://git.kernel.org/pub/scm/git/git.git
 
 就可把项目down到本地
+
+----------
 
 Git鼓励大量使用分支：
 
@@ -42,15 +46,21 @@ Git鼓励大量使用分支：
 
 删除分支：git branch -d <name>
 
+----------
+
 3,查看分支
 
 git branch   本地
 
 git branch -r  远程
 
+----------
+
 4,从远程获取
 
 git pull origin master
+
+----------
 
 5,本地分支与远程对应，即设置git push,pull默认的提交获取分支,这样就很方便的使用git push 提交信息或git pull获取信息
 
@@ -60,6 +70,8 @@ git branch --set-upstream-to=origin/dev
 
 git branch --unset-upstream master
 
+----------
+
 5、提交全部
 
 git add .
@@ -67,6 +79,8 @@ git add .
 git commit -m 'test'
 
 git push origin master
+
+----------
 
 若提交Git时，提示错误：RPC failed; result=22, HTTP code = 411。代表：上传的包过大，HTTP的头错误导致的。
 
@@ -79,6 +93,8 @@ git push origin master
 
 
 意思是上传的最大数据量为50MB。
+
+----------
 
 7.分支切换，需先commit
 
