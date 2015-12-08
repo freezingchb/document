@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <title>手机端图片处理</title>
+    <script src="http://libs.baidu.com/jquery/1.8.2/jquery.min.js"></script>
+    <style>
+        .item{width:150px;height:150px;float:left;margin:10px;}
+        .img{float:left;margin:10px;}
+    </style>
+</head>
+<body>
+    图片列表：<br />
+    <div class="item" data-src="a.png" style="background:url(a.png) no-repeat center center;background-size:cover;"></div>
+    <div class="item" data-src="b.png" style="background:url(b.png) no-repeat center center;background-size:cover;"></div>
+    <div style="clear:both;"></div>
+    
+    原图展示：<br />
+    <img class="img" src="a.png" />
+    <img class="img" src="b.png" />
+    
+    <script>
+        $(function(){
+			dealBg($('.item'));//调整背景图大小
+		});
+        
+        /**
+         * @处理背景图片
+         * @适用于手机端，原理就是调整div的background-size
+         * @若要用于pc端，可改写此方法，将图片置于超出隐藏的div中
+         * @author freezing
+         * @param obj 要处理的图片对象集
+         */
+        function dealBg(obj){
+            var needWidth,                    //需要调整成的宽度
+                needHeight,                   //需要调整成的高度
+                originSize,                   //图片原始尺寸
+                itemWidth = obj.eq(0).width();//div宽度
+            
+			for(var i=0;i<obj.length;i++){
+                originSize = getNaturalWidth(obj.eq(i).attr('data-src'));
+				if(originSize[1] > originSize[0]){
+                    //高大于宽
+					needWidth = itemWidth+'px';
+					needHeight = parseInt(itemWidth*originSize[1]/originSize[0])+'px';
+					obj.eq(i).css({backgroundSize:needWidth+' '+needHeight});
+				}else{
+                    //高小于宽
+					needHeight = itemWidth+'px';
+					needWidth = parseInt(itemWidth*originSize[0]/originSize[1])+'px';
+					obj.eq(i).css({backgroundSize:needWidth+' '+needHeight});
+				}
+			}
+        }
+        
+        //获取图片原始尺寸
+        function getNaturalWidth(src){
+            var realWidth,
+                realHeight,
+                im         = document.createElement('img');
+                im.src     = src,
+                realWidth  = im.width,
+                realHeight = im.height;
+                return [realWidth,realHeight];
+        }
+    </script>
+</body>
+</html>
