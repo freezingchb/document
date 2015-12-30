@@ -1,0 +1,34 @@
+<html>
+<body>
+<script type="text/javascript">
+//分页
+var pageNum=1;
+var page_ajax=true;
+$(document).ready(function(){
+    $(window).scroll(function(){
+        var bot = 50; //bot是底部距离的高度
+        if ((bot + $(window).scrollTop()) >= ($(document).height() - $(window).height())) {
+			if(page_ajax){
+				page_ajax=false;
+				pageNum++;
+				$.get('index_ajax.php?p='+pageNum+'&vid=<?php echo $vo['id'];?>',function(res){
+					if(res){
+						if(res=='err'){
+							
+						}else{
+							var goodsStr='';
+							$.each(res,function(i,item){
+								goodsStr+='<div class="list_intro"><span class="num red">'+item.xuhao+'</span><span class="center">'+item.name+'</span><span class="support" style="width:36%;">'+item.edit_num+'</span><div class="clear"></div></div>';
+							})
+							$('.rank_list').append(goodsStr);
+						}
+					}
+					page_ajax=true;
+				},'json');
+			}
+        }
+    });
+});
+</script>
+</body>
+</html>

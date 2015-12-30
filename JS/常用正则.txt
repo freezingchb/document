@@ -1,0 +1,12 @@
+//验证手机号
+function isMobil(s){
+    var patrn=/^1[0-9]{10}$/;  
+	if (!patrn.exec(s)) return false
+	return true
+}
+//验证密码
+function isPasswd(s){  
+	var patrn=/^[0-9a-zA-Z]{6,15}$/;  
+	if (!patrn.exec(s)) return false
+	return true
+}
