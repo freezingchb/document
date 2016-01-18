@@ -1,7 +1,12 @@
 1.CentOS下安装SecureCRT的sz/rz工具包
+
 2.ssh文件传输
+
 3.压缩和解压缩命令大全
+
 4.文件权限
+
+5.linux定时任务crontab
 
 ----------
 
@@ -100,3 +105,16 @@ x权限代表目录可进入，文件可执行
 可以用如下方法解决问题
 
 if(!is_dir('../data/doc')) mkdir('../data/doc');
+
+----------
+5.# crontab -e  编辑当前用户的定时任务
+
+添加如下代码（每一分钟用php脚本解释器执行一次script.php）：
+
+*/1 * * * * /bin/local/php /path/to/your/php/script.php
+
+添加完后# service crond status 查看运行状态
+
+ # service crond start 启动定时任务
+
+ # service crond stop 关闭定时任务
