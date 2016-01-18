@@ -14,7 +14,7 @@
         <hr />
         <div>
 <a name="1" id="1">
-1.ajax上传图片可以用jquery的ajaxForm插件来实现（兼容ie等），也可用FormData对象来实现（ie10+等），用iframe可实现类似效果。跨域问题，一种方法一用jsonp，另一种方法是真实地提交表单到iframe，还有一种方法是，在服务器端加header头允许跨域:
+1.ajax上传图片可以用jquery的ajaxForm插件来实现（兼容ie等），也可用FormData对象来实现（ie10+等），用iframe可实现类似效果。跨域问题，一种方法一用jsonp，另一种方法是真实地提交表单到iframe，还有一种方法是，在服务器端加header头允许跨域（不兼容ie8）:
 header('Access-Control-Allow-origin:*');
 header('Access-Control-Allow-Methods:POST');
 </a>
