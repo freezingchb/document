@@ -8,6 +8,16 @@
 
 5.linux定时任务crontab
 
+6.改变文件权限、所属用户、组
+
+7.tail命令
+
+8.whereis命令用于程序名的搜索
+
+9.du命令查看文件占用空间情况
+
+10.查看进程和端口的网络连接情况
+
 ----------
 
 1.yum自动安装：yum install lrzsz
@@ -118,3 +128,31 @@ if(!is_dir('../data/doc')) mkdir('../data/doc');
  # service crond start 启动定时任务
 
  # service crond stop 关闭定时任务
+
+----------
+
+6.使用chown命令可以修改文件或目录所属的用户：
+
+       命令：chown 用户 目录或文件名
+
+使用chgrp命令可以修改文件或目录所属的组：
+
+       命令：chgrp 组 目录或文件名
+
+ # chmod -R 751 directory 递归地给directory目录下所有文件和子目录分配权限
+
+----------
+
+7.循环查看文件内容 # tail -f test.log
+
+----------
+
+8.和find相比，whereis查找的速度非常快，因为系统内的所有文件都记录在一个数据库文件中，但是该数据库文件一星期更新一次，因此，我们在用whereis和locate不能查找实时文件 # whereis httpd 
+
+----------
+
+9.du -sh * 查看当前目录下文件和目录的大小
+
+----------
+
+10.查看是否有mysql进程 # ps -ef | grep mysql 查看mysql端口占用情况 netstat -anp | grep mysql
