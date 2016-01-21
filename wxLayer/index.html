@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>layer弹层微信版</title>
+<meta name="description" content="">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"> 
+<meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="format-detection" content="telephone=no">
+<script src="http://libs.baidu.com/jquery/1.10.1/jquery.min.js"></script>
+<script src="./layer_mobile/layer.js"></script>
+</head>
+<body style="margin:20px;color:#666">
+
+    <button onclick="wxMsg('保 存 成 功')">提示气泡</button><br />
+    用法：wxMsg('提示气泡')
+    <br /><br />
+    
+    <button onclick="wxAlert('类似于alert弹框')">类alert弹框</button><br />
+    用法：wxAlert('类似于alert弹框')
+    <br /><br />
+    
+    <button onclick="wxConfirm('类似于confirm弹框',function(){wxMsg('这是确定回调')},function(){wxMsg('这是取消回调')})">类confirm弹框</button><br />
+    用法：wxConfirm('类似于confirm弹框',function(){wxMsg('这是确定回调'),function(){wxMsg('这是取消回调')})
+    <br /><br />
+    
+    <button onclick="wxLoadShow();setTimeout(wxLoadHide,3000);">加载动画</button><br />
+    用法：wxLoadShow()开始加载动画，wxLoadHide()关闭加载动画
+    
+    
+<script type="text/javascript">
+</script>
+</body>
+</html>
+
+
