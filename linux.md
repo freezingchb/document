@@ -129,6 +129,8 @@ if(!is_dir('../data/doc')) mkdir('../data/doc');
 
  # service crond stop 关闭定时任务
 
+执行的php脚本如果有相对路径，可以在脚本头部加入代码：$cur_dir = dirname(__FILE__);chdir($cur_dir);
+
 ----------
 
 6.使用chown命令可以修改文件或目录所属的用户：
