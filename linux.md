@@ -18,6 +18,10 @@
 
 10.查看进程和端口的网络连接情况
 
+11.在后台运行linux命令
+
+12.用户管理
+
 ----------
 
 1.yum自动安装：yum install lrzsz
@@ -157,4 +161,16 @@ if(!is_dir('../data/doc')) mkdir('../data/doc');
 
 ----------
 
-10.查看是否有mysql进程 # ps -ef | grep mysql 查看mysql端口占用情况 netstat -anp | grep mysql
+10.查看是否有mysql进程 # ps -ef | grep mysql
+
+   查看mysql端口占用情况 netstat -anp | grep mysql
+
+----------
+
+11.在linux命令后加  &  就可以让该命令在后台运行
+
+----------
+
+12.添加用户 useradd tommy（会默认创建用户组tommy）   
+   修改密码 passwd tommy   
+   删除用户 userdel tommy（会默认删除用户组tommy）
