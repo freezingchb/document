@@ -99,6 +99,8 @@ zip命令
 
 　　压缩：zip FileName.zip DirName
 
+　　压缩目录及其下所有目录和文件：zip -r FileName.zip DirName
+
 ----------
 
 
