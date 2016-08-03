@@ -22,6 +22,8 @@
 
 12.用户管理
 
+13.php重启
+
 ----------
 
 1.yum自动安装：yum install lrzsz
@@ -176,3 +178,11 @@ if(!is_dir('../data/doc')) mkdir('../data/doc');
 12.添加用户 useradd tommy（会默认创建用户组tommy）   
    修改密码 passwd tommy   
    删除用户 userdel tommy（会默认删除用户组tommy）
+
+----------
+
+13.php重启用php-fpm
+
+	killall php-fpm 先关闭
+
+	/usr/local/php/sbin/php-fpm &  再执行(usr/local/php是php的安装目录)
