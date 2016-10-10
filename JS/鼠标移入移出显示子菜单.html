@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+    <title>鼠标移入移出显示子菜单</title>
+    <style type="text/css">
+        *{font-family:"Times New Roman","Microsoft YaHei",Georgia,Serif;}
+        button {
+            border: none;
+            color: #fff;
+            height: 25px;
+            padding: 0 20px;
+            cursor: pointer;
+            outline:none;
+            font-size: 12px !important;
+        }
+        .button_blue1 {
+        	background: #00AFF0;
+        }
+        .button_blue1:hover {
+        	background:#53cbf3;
+        }
+        .button_blue1:active{
+        	background: #66c2e0;
+        }
+    </style>
+</head>
+<body>
+    <div class="btn_group">
+        <button class="button_blue1">按钮一</button>    	
+        <button class="button_blue1">按钮二</button>    	    	
+        <button class="button_blue1">按钮三</button>
+    </div>
+    <div class="optLay" style="position:absolute;top:50px;display:none;width:40px;">
+        <a href="javascript:;" class="Edit" style="float:left;">修改</a>
+        <a href="javascript:;" class="Del" style="float:left;">删除</a>
+        <a href="javascript:;" class="Disable" style="float:left;">禁用</a>
+        <a href="javascript:;" class="Copy" style="float:left;">复制</a>
+    </div>
+    <script>
+        var timeClock = null;
+        $('.button_blue1').hover(function(){
+            var _o = this;
+            timeClock && clearTimeout(timeClock);
+            timeClock = setTimeout(function(){
+                $('.optLay').css({left : ($(_o).index() * 80 + 20) + 'px', display : 'block'}).attr('flag', $(_o).index());
+            },50);
+        },function(){
+            timeClock && clearTimeout(timeClock);
+            timeClock = setTimeout(function(){
+                $('.optLay').hide();
+            },600);
+        });
+
+        $('.optLay').hover(function(){
+            timeClock && clearTimeout(timeClock);
+        },function(){
+            $('.optLay').hide();
+        });
+    </script>
+</body>
+</html>
